@@ -1,0 +1,126 @@
+h1 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  margin-top: 10px;
+  color: white;
+}
+hr {
+  border: rgb(0, 0, 0) 2px solid;
+}
+.form-control {
+  margin-left: 22px;
+  width: 90%;
+  text-align: center;
+}
+.form-label {
+  float: left;
+  margin-left: 22px;
+}
+.d-flex {
+  align-items: center;
+}
+.modal-header {
+  align-items: center;
+  background-color: rgb(241, 237, 245);
+}
+.modal-title {
+  color: rgb(92, 78, 239);
+}
+input {
+  text-align: left !important;
+}
+/* button */
+.btnSave {
+  margin: 22px;
+  background-color: blue;
+  color: white;
+}
+.btnDelete {
+  margin: 22px;
+  background-color: red;
+  color: white;
+}
+/* icon */
+.fa-file-image {
+  padding: 3px;
+  color: rgb(217, 57, 204);
+}
+.fa-dollar-sign {
+  padding-left: 3px;
+  color: rgb(37, 234, 125);
+}
+i:hover {
+  cursor: pointer;
+}
+/* --table-- */
+.table {
+  margin-left: 5px;
+}
+th {
+  color: white;
+}
+#status:checked {
+  background-color: chartreuse;
+}
+#status:hover {
+  cursor: pointer;
+}
+tbody tr:hover {
+  background-color: rgb(100, 96, 96);
+  color: white;
+}
+
+/* -------------------- */
+/*----Responsive--------*/
+/* -------------------- */
+@media (max-width: 730px) {
+  button {
+    margin: 0;
+    font-size: small;
+  }
+  .table {
+    font-size: small;
+  }
+}
+@media (max-width: 580px) {
+  button {
+    margin: 0;
+    font-size: small;
+  }
+  .table {
+    font-size: small;
+  }
+  th,
+  td {
+    padding: 2px;
+  }
+}
+@media (max-width: 500px) {
+  #button-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  #button-container button {
+    display: block;
+    margin-bottom: 3px;
+  }
+  .table td:nth-child(7) label {
+    display: none;
+  }
+}
+@media (max-width: 410px) {
+  .table td:nth-child(3) {
+    display: none;
+  }
+  .table th:nth-child(3) {
+    display: none;
+  }
+}
+@media (max-width: 340px) {
+  .table {
+    font-size: x-small;
+  }
+  .d-flex button {
+    font-size: x-small;
+    width: auto;
+  }
+}

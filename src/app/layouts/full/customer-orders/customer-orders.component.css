@@ -1,0 +1,76 @@
+h1 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  margin-top: 10px;
+  color: white;
+}
+hr {
+  border: rgb(0, 0, 0) 2px solid;
+}
+/* ---Icon--- */
+.fa-eye {
+  color: rgb(77, 66, 203);
+  padding: 4px;
+}
+.fa-trash {
+  color: red;
+  padding: 4px;
+}
+.fa-eye:hover,
+.fa-trash:hover {
+  cursor: pointer;
+}
+
+/* delivery button */
+#delivery {
+  background-color: orange;
+}
+#delivery:checked {
+  background-color: rgb(64, 236, 48);
+}
+#delivery:hover {
+  cursor: pointer;
+}
+/* --table-- */
+.table {
+  margin-left: 5px;
+}
+th {
+  color: white;
+}
+.form-check-input:checked {
+  background-color: chartreuse;
+}
+.form-check-input:hover {
+  cursor: pointer;
+}
+/* tbody tr:hover {
+  background-color: rgb(100, 96, 96);
+  color: white;
+} */
+/* --view order */
+.modal-header {
+  background-color: rgb(57, 45, 43);
+}
+.modal-title {
+  color: rgb(253, 89, 89);
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+@media (max-width: 640px) {
+  .whole {
+    overflow-x: scroll;
+  }
+  .table {
+    font-size: small;
+  }
+}
+@media (max-width: 350px) {
+  .table {
+    font-size: x-small;
+  }
+  td,
+  th {
+    padding: 2px;
+  }
+}

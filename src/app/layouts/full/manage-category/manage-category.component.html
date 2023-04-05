@@ -1,0 +1,159 @@
+<h1>Manage Category</h1>
+<br />
+<div class="d-flex justify-content-between">
+  <button (click)="openAddCategory()" type="button" class="btn button-blue">
+    Add Category
+  </button>
+  <button (click)="openDelete()" type="button" class="btn button-red">
+    Delete Category
+  </button>
+</div>
+<br />
+<hr />
+<!--category table-->
+<table class="table">
+  <thead class="bg-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Edit</th>
+    </tr>
+  </thead>
+  <tbody class="bg-light" id="body">
+    <tr *ngFor="let obj of data">
+      <td>{{ obj.id }}</td>
+      <td>{{ obj.name | uppercase }}</td>
+      <td id="edit" (click)="openEditCategory()">
+        <i class="fa-solid fa-pen-to-square"></i>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!--Add Category-->
+<div
+  [formGroup]="addCategoryForm"
+  class="modal fade"
+  id="catForm"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Category</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          id="j"
+        ></button>
+      </div>
+      <br />
+      <div class="form-outline flex-fill mb-3">
+        <label class="form-label" for="form3Example1c">Category Name</label>
+        <input
+          formControlName="name"
+          type="text"
+          id="form3Example1k"
+          class="form-control"
+          required
+        />
+      </div>
+
+      <button (click)="add()" class="btn btnSave">Add Category</button>
+    </div>
+  </div>
+</div>
+
+<!--Edit Category-->
+<div
+  [formGroup]="editCategoryForm"
+  class="modal fade"
+  id="editForm"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Category</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <div class="form-outline flex-fill mb-3">
+        <label class="form-label" for="form3Example1c">Category Name</label>
+        <input
+          formControlName="name"
+          type="text"
+          id="form3Example1k"
+          class="form-control"
+          required
+        />
+      </div>
+
+      <div class="form-outline flex-fill mb-3">
+        <label class="form-label" for="form3Example1c">Category ID</label>
+        <input
+          formControlName="num"
+          type="text"
+          id="form3Example1k"
+          class="form-control"
+          required
+        />
+      </div>
+      <!-- <div class="d-flex justify-content-evenly"> -->
+      <button (click)="updateCategoryDetails()" class="btn btnSave">
+        Save
+      </button>
+    </div>
+  </div>
+</div>
+
+<!--Delete Category-->
+<div
+  [formGroup]="deleteCategoryForm"
+  class="modal fade"
+  id="deleteFormCat"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete Category</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <br />
+      <div class="form-outline flex-fill mb-3">
+        <label class="form-label" for="form3Example1c">Category ID</label>
+        <input
+          formControlName="id"
+          type="text"
+          id="form3Example1k"
+          class="form-control"
+          required
+        />
+      </div>
+
+      <button (click)="deleteCategories()" class="btn btnDelete">Delete</button>
+    </div>
+  </div>
+</div>

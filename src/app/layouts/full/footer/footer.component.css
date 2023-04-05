@@ -1,0 +1,88 @@
+/* --countdown--- */
+body {
+  margin-top: 20px;
+  background: #fafafa;
+}
+.order-card {
+  color: #fff;
+}
+
+.bg-c-blue {
+  background: linear-gradient(45deg, #4099ff, #73b4ff);
+}
+
+.bg-c-green {
+  background: linear-gradient(45deg, #2ed8b6, #59e0c5);
+}
+
+.bg-c-yellow {
+  background: linear-gradient(45deg, #ffb64d, #ffcb80);
+}
+
+.bg-c-pink {
+  background: linear-gradient(45deg, #ff5370, #ff869a);
+}
+.bg-c-black {
+  background: rgb(2, 0, 35);
+  background: linear-gradient(
+    45deg,
+    rgba(2, 0, 35, 1) 0%,
+    rgba(88, 88, 88, 1) 100%
+  );
+}
+
+.card {
+  border-radius: 5px;
+  -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+  box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+  border: none;
+  margin-bottom: 30px;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.card .card-block {
+  padding: 25px;
+}
+
+.order-card i {
+  font-size: 26px;
+}
+
+.f-left {
+  float: left;
+}
+
+.f-right {
+  float: right;
+}
+#foot {
+  margin-bottom: 0 !important;
+}
+.hotLine {
+  color: red;
+  margin-left: 150px;
+}
+#phone {
+  color: red !important;
+}
+/* Apply the animation to the span element */
+#move {
+  animation: slide-in 7s ease-out infinite;
+  animation-fill-mode: backwards ease-in;
+}
+
+/* Define the keyframe animation */
+@keyframes slide-in {
+  from {
+    transform: translateX(-20%);
+  }
+  to {
+    transform: translateX(-300%);
+  }
+}
+@media (max-width: 1000px) {
+  #move {
+    animation: none;
+  }
+}

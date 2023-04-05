@@ -1,0 +1,23 @@
+.col-3 {
+  display: inline-flex;
+  margin: 20px;
+}
+
+.card-header {
+  background-color: rgb(104, 141, 174);
+}
+h1 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  margin-top: 10px;
+  color: white;
+}
+hr {
+  border: rgb(0, 0, 0) 2px solid;
+}
+/* --Responsive-- */
+@media (max-width: 745px) {
+  .col-3 {
+    width: 90%;
+    margin: 10px;
+  }
+}

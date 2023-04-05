@@ -1,0 +1,343 @@
+<h1>Manage Products</h1>
+<br />
+<div class="d-flex justify-content-between flex-wrap" id="button-container">
+  <button (click)="openAddProducts()" type="button" class="btn button-blue">
+    Add Product
+  </button>
+  <button (click)="openUpdatePro()" type="button" class="btn button-green">
+    Edit Product
+  </button>
+
+  <button (click)="openDeletePro()" type="button" class="btn button-red">
+    Delete Product
+  </button>
+</div>
+<br />
+<hr />
+
+<!--category table-->
+<table class="table">
+  <thead class="bg-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Category ID</th>
+      <th scope="col">Description</th>
+      <th scope="col">Price</th>
+      <th scope="col">Action</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody class="bg-light" id="body">
+    <tr *ngFor="let obj of data">
+      <td>{{ obj.id }}</td>
+      <td>{{ obj.name }}</td>
+      <td>{{ obj.categoryID }}</td>
+      <td>{{ obj.description | slice : 0 : 60 }}...</td>
+      <td>{{ obj.price }}</td>
+      <td>
+        <i
+          (click)="openUpdateImage(obj.id)"
+          title="Change Imgae"
+          class="fa-solid fa-file-image"
+        ></i>
+        <i
+          (click)="openUpdatePrice(obj.id)"
+          title="Change Price"
+          class="fa-solid fa-dollar-sign"
+        ></i>
+      </td>
+
+      <td>
+        <div class="form-check form-switch">
+          <input
+            title="Change product Availability"
+            class="form-check-input"
+            type="checkbox"
+            role="switch"
+            (change)="status($event, obj.id)"
+            [checked]="obj.status == 'Available'"
+            id="status"
+          />
+          <label class="form-check-label" for="status{{ obj.id }}">{{
+            obj.status
+          }}</label>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<!-- Add Product -->
+<div
+  class="modal fade"
+  id="productForm"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Product</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <div class="form-outline flex-fill mb-3">
+        <label class="form-label" for="name">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          name="name"
+          [(ngModel)]="product.name"
+          required
+        />
+      </div>
+      <div class="form-outline flex-fill mb-3">
+        <label class="form-label" for="categoryID">Category</label>
+        <input
+          type="text"
+          class="form-control"
+          name="categoryID"
+          [(ngModel)]="product.categoryID"
+          required
+        />
+      </div>
+      <div class="form-outline flex-fill mb-3">
+        <label class="form-label" for="description">Description</label>
+        <textarea
+          minlength="150"
+          maxlength="150"
+          class="form-control"
+          name="description"
+          [(ngModel)]="product.description"
+          required
+        ></textarea>
+      </div>
+      <div class="form-outline flex-fill mb-3">
+        <label class="form-label" for="price">Price</label>
+        <input
+          type="number"
+          class="form-control"
+          name="price"
+          [(ngModel)]="product.price"
+          required
+        />
+      </div>
+      <div class="form-outline flex-fill mb-3">
+        <label class="form-label" for="photo">Photo</label>
+        <input
+          type="file"
+          class="form-control-file"
+          name="photo"
+          (change)="onFileSelected($event)"
+          required
+        />
+      </div>
+
+      <button (click)="onSubmit()" class="btn btnSave">Submit</button>
+    </div>
+  </div>
+</div>
+
+<!--Delete Category-->
+<div
+  [formGroup]="deleteProductForm"
+  class="modal fade"
+  id="deleteFormPro"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete Products</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          id="j"
+        ></button>
+      </div>
+
+      <div class="form-outline flex-fill mb-3">
+        <label class="form-label" for="form3Example1c">Product ID</label>
+        <input
+          formControlName="id"
+          type="text"
+          id="form3Example1k"
+          class="form-control"
+          required
+        />
+      </div>
+
+      <button (click)="deletePro()" class="btn btnDelete">Delete</button>
+    </div>
+  </div>
+</div>
+
+<!--Update Products-->
+
+<div
+  class="modal fade"
+  id="updateFormPro"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Product</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <div class="form-outline flex-fill mb-3">
+        <label class="form-label" for="name">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          name="name"
+          [(ngModel)]="product.name"
+          required
+        />
+      </div>
+      <div class="form-outline flex-fill mb-3">
+        <label class="form-label" for="categoryID">Category</label>
+        <input
+          type="text"
+          class="form-control"
+          name="categoryID"
+          [(ngModel)]="product.categoryID"
+          required
+        />
+      </div>
+      <div class="form-outline flex-fill mb-3">
+        <label class="form-label" for="description">Description</label>
+        <textarea
+          class="form-control"
+          name="description"
+          [(ngModel)]="product.description"
+          required
+        ></textarea>
+      </div>
+      <div class="form-outline flex-fill mb-3">
+        <label class="form-label" for="price">Price</label>
+        <input
+          type="number"
+          class="form-control"
+          name="price"
+          [(ngModel)]="product.price"
+          required
+        />
+      </div>
+      <div class="form-outline flex-fill mb-3">
+        <label class="form-label" for="price">Product ID</label>
+        <input
+          type="number"
+          class="form-control"
+          name="id"
+          [(ngModel)]="product.id"
+          required
+        />
+      </div>
+      <div class="form-outline flex-fill mb-3">
+        <label class="form-label" for="photo">Photo</label>
+        <input
+          type="file"
+          class="form-control-file"
+          name="photo"
+          (change)="onFileSelected($event)"
+          required
+        />
+      </div>
+
+      <button (click)="onSubmitUpdate()" class="btn btnSave">Submit</button>
+    </div>
+  </div>
+</div>
+
+<!-- Update Image -->
+<div
+  class="modal fade"
+  id="imageForm"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update Image</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="clearLastForm()"
+        ></button>
+      </div>
+
+      <div class="form-outline flex-fill mb-3">
+        <label class="form-label" for="photo">Photo</label>
+        <input
+          type="file"
+          class="form-control-file"
+          name="photo"
+          (change)="onImageSelected($event)"
+          required
+        />
+      </div>
+
+      <button (click)="updatephoto()" class="btn btnSave">Submit</button>
+    </div>
+  </div>
+</div>
+
+<!--  -->
+
+<!-- update price -->
+<div
+  class="modal fade"
+  id="priceForm"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update Price</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <div class="form-outline flex-fill mb-3">
+        <label class="form-label" for="priceo">Price</label>
+        <input id="priceo" type="text" class="form-control" required />
+      </div>
+
+      <button (click)="priceSubmit()" class="btn btnSave">Submit</button>
+    </div>
+  </div>
+</div>

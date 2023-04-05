@@ -1,0 +1,100 @@
+h1 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  margin-top: 10px;
+  color: white;
+}
+
+select:required:invalid {
+  color: gray;
+}
+option[value=""][disabled] {
+  display: none;
+}
+option {
+  color: black;
+}
+h6 {
+  text-align: left;
+  margin-left: 10px;
+}
+form {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.table {
+  margin-left: 5px;
+}
+th {
+  color: white;
+}
+.col input {
+  background-color: rgb(59, 58, 57);
+  color: white;
+}
+.col input::placeholder {
+  color: rgba(255, 255, 255, 0.205);
+}
+.form-select {
+  background-color: rgb(59, 58, 57);
+  color: white;
+}
+.display {
+  color: rgba(255, 255, 255, 0.205) !important;
+}
+/* --Responsive--- */
+@media (max-width: 575px) {
+  input,
+  select,
+  option {
+    padding: 0;
+  }
+  .col {
+    padding: 5px;
+  }
+}
+@media (max-width: 450px) {
+  input,
+  select,
+  option,
+  h6,
+  table {
+    font-size: small;
+  }
+  .col {
+    padding: 3px;
+  }
+}
+@media (max-width: 380px) {
+  button {
+    font-size: small !important;
+  }
+  .d-flex {
+    font-size: small;
+    margin: 0;
+    padding: 0;
+  }
+  table {
+    font-size: x-small;
+  }
+  .col {
+    padding: 2px;
+  }
+}
+@media (max-width: 315px) {
+  input,
+  select,
+  option,
+  h6,
+  button {
+    font-size: x-small !important;
+  }
+  table {
+    font-size: xx-small;
+  }
+  .col {
+    padding: 1px;
+  }
+  th {
+    padding: 3px;
+  }
+}

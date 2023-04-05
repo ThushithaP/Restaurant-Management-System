@@ -1,0 +1,155 @@
+<section class="whole">
+  <h1>Manage Customer</h1>
+  <br />
+  <div class="d-flex justify-content-between">
+    <button
+      (click)="openUpdateStatusForm()"
+      type="button"
+      class="btn button-green"
+    >
+      Update Customer Status
+    </button>
+    <button class="btn button-blue" (click)="goToCustomer()">
+      Go to Customer DashBoard
+    </button>
+    <button class="btn button-red" (click)="openDelete()">
+      Delete Customer
+    </button>
+  </div>
+  <br />
+  <hr />
+  <!--Customer Details table-->
+  <table class="table">
+    <thead class="bg-dark">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Contact Number</th>
+        <th scope="col">Password</th>
+        <th scope="col">Role</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody class="bg-light" id="body">
+      <tr *ngFor="let obj of data">
+        <td>{{ obj.id }}</td>
+        <td>{{ obj.name }}</td>
+        <td>{{ obj.email }}</td>
+        <td>{{ obj.phoneNumber }}</td>
+        <td>{{ obj.password }}</td>
+        <td>{{ obj.role }}</td>
+        <td>
+          <div class="form-check form-switch">
+            <input
+              title="Change customer status"
+              class="form-check-input"
+              type="checkbox"
+              role="switch"
+              (change)="customerStatus($event, obj.id)"
+              [checked]="obj.status == 'Active'"
+              id="customerstatus"
+            />
+
+            <label class="form-check-label" for="customerstatus{{ obj.id }}">{{
+              obj.status
+            }}</label>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!--Update Customer Status-->
+  <div
+    [formGroup]="updateCustomerStatusForm"
+    class="modal fade"
+    id="updateStatus"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">
+            Update Customer Status
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            id="k"
+          ></button>
+        </div>
+
+        <div class="form-outline flex-fill mb-3">
+          <label class="form-label" for="form3Example1c">Customer ID</label>
+          <input
+            formControlName="id"
+            type="text"
+            id="form3Example1k"
+            class="form-control"
+            required
+          />
+        </div>
+        <div class="form-outline flex-fill mb-3">
+          <label class="form-label" for="form3Example1c">New Status</label>
+
+          <select formControlName="status" class="form-control" required>
+            <option value="" disabled selected hidden>status</option>
+            <option value="Active">Active</option>
+            <option value="Deactive">Deactive</option>
+          </select>
+        </div>
+
+        <button (click)="updateStatus()" class="btn btnStatus">Done</button>
+      </div>
+    </div>
+  </div>
+  <!-- Delete -->
+  <div
+    [formGroup]="DeleteForm"
+    class="modal fade"
+    id="cusDelete"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Delete Customer</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            id="j"
+          ></button>
+        </div>
+
+        <div class="form-outline flex-fill mb-3">
+          <label class="form-label" for="form3Example1c">Customer ID</label>
+          <input
+            formControlName="id"
+            type="text"
+            class="form-control"
+            required
+          />
+        </div>
+
+        <button (click)="DeleteCustomer()" class="btn btnCustomerDelete">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--  -->
+<!--  -->
+<!-- HTML !-->

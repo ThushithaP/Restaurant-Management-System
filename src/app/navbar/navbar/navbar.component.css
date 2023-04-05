@@ -1,0 +1,392 @@
+/*common*/
+body {
+  background-color: #fff;
+  width: 100%;
+  height: 100vh;
+}
+a {
+  text-decoration: none;
+  color: #000;
+  transition: all 0.3s ease-in;
+}
+li {
+  list-style: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+}
+li:hover {
+  transform: scale(1.2);
+}
+label {
+  cursor: pointer;
+}
+input[type="radio"],
+input[type="checkbox"] {
+  display: none;
+}
+
+/*header*/
+header {
+  width: 100%;
+  padding: 20px 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow-x: hidden;
+}
+/*logo*/
+header .logo {
+  position: relative;
+  z-index: 101;
+  max-width: 150px;
+}
+header .logo img {
+  width: 100%;
+}
+/*Menu links*/
+header .menu {
+  max-width: 300px;
+  position: relative;
+  z-index: 101;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header .menu li {
+  margin: 0 15px;
+  padding: 10px 20px;
+}
+/*Menu icons*/
+header label {
+  position: absolute;
+  z-index: 101;
+  top: 40px;
+  right: 50px;
+  display: none;
+}
+
+header label i {
+  font-size: 1.5rem;
+  color: #000;
+}
+
+/*Container*/
+.container {
+  position: relative;
+  z-index: 100;
+  min-height: 75vh;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  margin-bottom: 100px;
+  overflow: hidden;
+}
+/*-----Text-----*/
+.container .text-box {
+  width: 600px;
+  padding: 20px;
+  text-align: left;
+}
+.container .text-box h2 {
+  font-size: 4rem;
+  font-family: monospace;
+}
+.container .text-box p {
+  font-size: 1rem;
+  margin: 10px 0;
+}
+
+.container .text-box a {
+  display: inline-block;
+  padding: 20px 50px;
+  border: 3px solid #000;
+  color: #000;
+  font-weight: bolder;
+}
+.container .text-box a:hover {
+  background-color: #f1d55c;
+  color: #151313;
+}
+.text-box:hover {
+  cursor: default;
+}
+
+/*----Images----*/
+.container .bg-img {
+  max-width: 550px;
+  width: 100%;
+  overflow: hidden;
+}
+.container .bg-img img {
+  width: 100%;
+  transition: all 0.5s ease-in;
+}
+
+/*----Shapes----*/
+.shape {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  clip-path: circle(65% at right);
+}
+.red {
+  background-color: #f1d55c;
+}
+.yellow {
+  background-color: #c1232a;
+}
+.orange {
+  background-color: #9c6a2e;
+}
+/*----Fixed Image Slide Menu----*/
+.thumb {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 5px;
+  padding: 10px;
+  z-index: 101;
+}
+
+.thumb li {
+  margin: 10px 0;
+  transition: all 0.3s ease-in;
+}
+
+.thumb img {
+  max-width: 50px;
+}
+
+/*----Footer---*/
+footer {
+  width: 100%;
+  position: fixed;
+  z-index: 101;
+  bottom: 0;
+  left: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+}
+/*----Icons---*/
+footer .social {
+  margin-bottom: 10px;
+}
+footer .social a {
+  margin-left: 20px;
+}
+footer .social i {
+  color: #000;
+  font-size: 1.6rem;
+  transition: all 0.3s ease-in;
+}
+
+footer .social i:hover {
+  transform: scale(1.1);
+}
+/*----credit text---*/
+footer .credit {
+  text-align: right;
+  color: #000;
+  font-size: 0.9rem;
+}
+
+/*----Image Slide---*/
+/*Biriyani*/
+#biriyani:checked ~ .container .bg-img img:nth-child(1) {
+  visibility: visible;
+  opacity: 1;
+}
+#biriyani:checked ~ .container .bg-img img:nth-child(2),
+#biriyani:checked ~ .container .bg-img img:nth-child(3),
+#biriyani:checked ~ .orange,
+#biriyani:checked ~ .yellow {
+  max-height: 0;
+  visibility: hidden;
+  opacity: 0;
+}
+/*Naan*/
+#naan:checked ~ .container .bg-img img:nth-child(2) {
+  visibility: visible;
+  opacity: 1;
+}
+#naan:checked ~ .container .bg-img img:nth-child(1),
+#naan:checked ~ .container .bg-img img:nth-child(3),
+#naan:checked ~ .red,
+#naan:checked ~ .yellow {
+  max-height: 0;
+  visibility: hidden;
+  opacity: 0;
+}
+/*Soup*/
+#soup:checked ~ .container .bg-img img:nth-child(3) {
+  visibility: visible;
+  opacity: 1;
+}
+#soup:checked ~ .container .bg-img img:nth-child(1),
+#soup:checked ~ .container .bg-img img:nth-child(2),
+#soup:checked ~ .red,
+#soup:checked ~ .orange {
+  max-height: 0;
+  visibility: hidden;
+  opacity: 0;
+}
+
+/*----Responsive-----*/
+@media (max-width: 950px) {
+  /*Header*/
+  header {
+    flex-direction: column;
+    padding: 20px 50px;
+  }
+  .logo {
+    margin-bottom: 10px;
+  }
+  /*container*/
+  .container {
+    flex-direction: column;
+  }
+  .container .text-box {
+    width: 100%;
+    max-width: 550px;
+    text-align: center;
+  }
+  .container .bg-img {
+    max-width: 450px;
+    width: 100%;
+  }
+  /*---footer----*/
+  footer {
+    position: relative;
+  }
+}
+
+@media (max-width: 470px) {
+  /*Header*/
+  header .menu {
+    position: absolute;
+    width: 100%;
+    max-width: inherit;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 10px 0;
+    top: 120px;
+    left: -100%;
+    transition: all 0.3s ease-in;
+  }
+  header .menu li {
+    margin: 15px 0;
+  }
+  header label:nth-child(4) {
+    display: block;
+  }
+  /*container*/
+  .container .text-box h2 {
+    font-size: 3rem;
+  }
+  /*Image slide*/
+  .thumb img {
+    max-width: 30px;
+  }
+
+  /*responsive menu*/
+  #menu-show:checked ~ .menu {
+    left: 0;
+  }
+  #menu-show:checked ~ label:nth-child(4) {
+    display: none;
+  }
+  #menu-show:checked ~ label:nth-child(5) {
+    display: block;
+  }
+}
+
+/*---Signup Form------*/
+.form-control {
+  margin-left: 22px;
+  width: 90%;
+  text-align: left;
+}
+.form-label {
+  margin-left: 22px;
+}
+.d-flex {
+  align-items: center;
+}
+.modal-header {
+  align-items: center;
+  background-color: rgb(241, 237, 245);
+}
+.modal-title {
+  color: rgb(92, 78, 239);
+}
+.gradient-custom-4 {
+  background-color: #76b5c5;
+  width: 60%;
+}
+
+.gradient-custom-3 {
+  background-color: #c1232a;
+  width: 30%;
+  margin-bottom: 5px;
+}
+span {
+  color: red;
+  font-size: x-small;
+  margin-left: 5px;
+}
+.alert-danger {
+  height: 10px;
+  margin-left: 22px;
+  width: 90%;
+  line-height: 2px;
+}
+.alert-danger span {
+  height: 100%;
+  vertical-align: middle;
+  font-size: 0.8rem;
+}
+.btnSign {
+  margin: 22px;
+  background-color: blue;
+  color: white;
+}
+
+.text-box h2 {
+  position: relative;
+  z-index: 1;
+}
+
+.text-box h2::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30%;
+  height: 3px;
+  background-color: #ffc107;
+  animation: knight-rider 2s ease-in-out infinite;
+}
+
+@keyframes knight-rider {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  50% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}

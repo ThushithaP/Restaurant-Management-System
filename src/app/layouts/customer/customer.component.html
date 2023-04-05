@@ -1,0 +1,188 @@
+<app-header></app-header>
+
+<div class="container-fluid">
+  <!-- Biriyani -->
+  <div class="products" (click)="biriyaniDetails()">
+    <img src="../../../assets/img/biriyani.png" class="card-img-top" alt="" />
+    <div class="card-body">
+      <p class="card-title">Biriyani</p>
+    </div>
+  </div>
+  <!-- Bread -->
+  <div class="products" (click)="breadDetails()">
+    <img src="../../../assets/img/bread.png" class="card-img-top" alt="" />
+    <div class="card-body">
+      <p class="card-title">Bread</p>
+    </div>
+  </div>
+  <!-- Coke -->
+  <div class="products" (click)="softDrinks()">
+    <img src="../../../assets/img/coke.png" class="card-img-top" alt="" />
+    <div class="card-body">
+      <p class="card-title">Coke</p>
+    </div>
+  </div>
+  <button
+    class="myorder"
+    type="button"
+    data-bs-toggle="offcanvas"
+    data-bs-target="#offcanvasTop"
+    aria-controls="offcanvasTop"
+  >
+    My Orders
+  </button>
+
+  <div
+    type="button"
+    data-bs-toggle="offcanvas"
+    data-bs-target="#offcanvasRight"
+    aria-controls="offcanvasRight"
+    class="cart"
+  >
+    <img class="cartimg" src="../../../assets/img/cart.png" width="50px" />
+  </div>
+</div>
+
+<!--Cart Details  -->
+
+<div
+  class="offcanvas offcanvas-end"
+  tabindex="-1"
+  id="offcanvasRight"
+  aria-labelledby="offcanvasRightLabel"
+>
+  <div class="offcanvas-header">
+    <h5 id="offcanvasRightLabel">My Cart</h5>
+    <button
+      type="button"
+      class="btn-close text-reset"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="order">
+    <table>
+      <thead class="bg-dark">
+        <tr class="bg-light">
+          <th>Item name</th>
+          <th>Qty</th>
+          <th>Price</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="row" #row *ngFor="let item of cartItems; let i = index">
+          <td class="itN">
+            {{ item.name }}
+          </td>
+          <td>
+            <input
+              class="qty"
+              type="number"
+              id="quan-{{ i }}"
+              (input)="multiply($event, item)"
+              value="{{ item.qty }}"
+              min="0"
+            />
+          </td>
+          <td>Rs.{{ item.totalPrice }}</td>
+          <td>
+            <i
+              class="fa fa-trash"
+              aria-hidden="true"
+              (click)="deleteItemIncart(item.id)"
+            ></i>
+          </td>
+        </tr>
+        <hr id="hr" />
+        <tr id="tot">
+          <td colspan="2"><b>Total:</b></td>
+          <td>
+            <b>Rs.{{ getTotalPrice() }}</b>
+          </td>
+        </tr>
+        <tr id="rowCst" #rowCst>
+          <td>Adress:<textarea></textarea></td>
+        </tr>
+        <tr id="rownum" #rownum>
+          <td>Contact Number:<input type="text" /></td>
+        </tr>
+
+        <img src="../../../assets/img/free-delivery.png" width="100%" />
+      </tbody>
+    </table>
+
+    <button class="confirm" (click)="submitCart()">Confirm Order</button>
+  </div>
+</div>
+
+<!-- product details -->
+<div class="card" style="width: 18rem" *ngFor="let obj of data">
+  <div class="card-head">
+    <img
+      [src]="obj.photo"
+      class="card-img-top"
+      height="290px"
+      width="270px"
+      alt="..."
+    />
+    <br /><br /><br />
+  </div>
+
+  <div id="cardBody" class="card-body">
+    <h5 id="head" class="card-title">{{ obj.name }}</h5>
+    <p class="card-text">{{ obj.description }}</p>
+    <h5>Rs. {{ obj.price }}</h5>
+    <button href="#" class="btn" (click)="addToCart(obj)">Add to cart</button>
+  </div>
+</div>
+<app-footer></app-footer>
+<!-- <p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos
+  praesentium delectus error, laboriosam enim numquam quasi harum minus!
+  Doloribus enim iste ratione nemo debitis expedita velit minima vel officiis
+  similique.
+</p> -->
+
+<!--My Orders-->
+
+<div
+  class="offcanvas offcanvas-top ml-30px"
+  tabindex="-1"
+  id="offcanvasTop"
+  aria-labelledby="offcanvasTopLabel"
+  *ngFor="let order of orders"
+>
+  <div class="offcanvas-header">
+    <h5 id="offcanvasTopLabel">Last Order Of {{ order.nameUser }}</h5>
+    <button
+      type="button"
+      class="btn-close text-reset"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="offcanvas-body">
+    <table id="myorder">
+      <thead class="bg-dark">
+        <tr class="bg-light">
+          <th>Date</th>
+          <th>Items</th>
+          <th>Qty</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of orderItems">
+          <td>{{ order.dateUser.slice(0, 10) }}</td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.qty }}</td>
+          <td>{{ item.price }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<td id="myItem"></td>
+<td id="myqty"></td>
+<td id="myprice"></td>

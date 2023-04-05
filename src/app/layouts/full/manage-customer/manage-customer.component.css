@@ -1,0 +1,92 @@
+h1 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  margin-top: 10px;
+  color: white;
+}
+hr {
+  border: rgb(0, 0, 0) 2px solid;
+}
+
+/*-----Form------*/
+.form-control {
+  margin-left: 22px;
+  width: 90%;
+  text-align: center;
+}
+.form-label {
+  float: left;
+  margin-left: 22px;
+}
+.d-flex {
+  align-items: center;
+}
+.modal-header {
+  align-items: center;
+  background-color: rgb(241, 237, 245);
+}
+.modal-title {
+  color: rgb(92, 78, 239);
+}
+.btnStatus {
+  margin: 22px;
+  background-color: blue;
+  color: white;
+}
+input {
+  text-align: left !important;
+}
+.btnCustomerDelete {
+  margin: 22px;
+  background-color: red;
+  color: white;
+}
+#customerstatus:hover {
+  cursor: pointer;
+}
+/* --table-- */
+.table {
+  margin-left: 5px;
+}
+th {
+  color: white;
+}
+#customerstatus:checked {
+  background-color: chartreuse;
+}
+#customerstatus:hover {
+  cursor: pointer;
+}
+tbody tr:hover {
+  background-color: rgb(100, 96, 96);
+  color: white;
+}
+/* ----Responsive--- */
+@media (max-width: 985px) {
+  .table td:nth-child(7) label {
+    display: none;
+  }
+  td,
+  th {
+    padding: 2px;
+  }
+}
+@media (max-width: 750px) {
+  .table {
+    font-size: small;
+  }
+  .d-flex button {
+    font-size: small;
+  }
+}
+@media (max-width: 645px) {
+  .d-flex {
+    flex-direction: column;
+  }
+  .d-flex button {
+    margin-bottom: 3px;
+  }
+
+  .whole {
+    overflow-x: scroll;
+  }
+}

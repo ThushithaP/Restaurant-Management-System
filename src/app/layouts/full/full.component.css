@@ -1,0 +1,25 @@
+body {
+  margin-bottom: 0;
+}
+
+.flex-container {
+  display: flex;
+}
+.deta {
+  margin: 3px;
+  background: rgb(4, 0, 36);
+  background: linear-gradient(
+    180deg,
+    rgba(4, 0, 36, 1) 0%,
+    rgba(21, 18, 36, 1) 86%
+  );
+  text-align: center;
+}
+@media (max-width: 760px) {
+  .col-3 {
+    width: 20% !important;
+  }
+  .col-9 {
+    width: 80%;
+  }
+}

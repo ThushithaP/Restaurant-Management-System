@@ -1,0 +1,50 @@
+li a {
+  text-decoration: none;
+}
+.sidenav-nav-item:hover {
+  /* background-color: rgb(105, 101, 95); */
+  transform: scale(0.9);
+  transition: 0.3s;
+}
+li {
+  list-style-type: none;
+  /* line-height: 60px; */
+  position: relative;
+  padding-left: 20px;
+  background-color: aqua;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  height: 60px;
+
+  /* height: 200px;
+    width: 90%; */
+  background-image: conic-gradient(
+    from 68deg at 37% 100%,
+    rgb(59, 58, 57) 36deg,
+    rgb(42, 38, 40) 144deg
+  );
+}
+
+.sidenav {
+  /* background-color: slategray; */
+  height: 100vh;
+  background-color: black;
+  margin-top: 3px;
+}
+.sidenav-link-text {
+  color: azure;
+  padding: 20px 0 0 10px;
+  padding-top: 20px;
+}
+
+i {
+  color: rgb(247, 51, 51);
+  padding-top: 15px;
+}
+
+/* --Responsive--- */
+@media (max-width: 760px) {
+  .sidenav-link-text {
+    display: none;
+  }
+}

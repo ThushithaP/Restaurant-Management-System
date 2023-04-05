@@ -1,0 +1,93 @@
+<section class="whole">
+  <h1>Customer Orders</h1>
+  <hr />
+
+  <!-- customer order details table -->
+  <table class="table">
+    <thead class="bg-dark">
+      <tr>
+        <th scope="col">Date & Time</th>
+        <th scope="col">Name</th>
+        <th scope="col">Address</th>
+        <th scope="col">Contact Number</th>
+        <th scope="col">Action</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody class="bg-light" id="body">
+      <tr *ngFor="let customerOrder of customersOrder">
+        <td>
+          {{ customerOrder.dateUser | date : "yyyy-MM-dd'  'HH:mm:ss" }}
+        </td>
+        <td>{{ customerOrder.nameUser }}</td>
+        <td>{{ customerOrder.addressUser }}</td>
+        <td>{{ customerOrder.numberUser }}</td>
+        <td>
+          <i
+            (click)="viewtable(customerOrder.dateUser)"
+            class="fa fa-eye"
+            aria-hidden="true"
+            (click)="openViewOrder()"
+          ></i>
+          <i
+            class="fa fa-trash"
+            aria-hidden="true"
+            (click)="deleteOrder(customerOrder.id)"
+          ></i>
+        </td>
+        <td>
+          <div class="form-check form-switch">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              role="switch"
+              [disabled]="customerOrder.status === 'Delivered'"
+              (change)="delivery($event, customerOrder.id)"
+              [checked]="customerOrder.status === 'Delivered'"
+            />
+            <label
+              class="form-check-label"
+              for="delivery{{ customerOrder.id }}"
+              >{{ customerOrder.status }}</label
+            >
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- view order -->
+  <div
+    class="modal-dialog fade"
+    id="vieworder"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header" *ngFor="let customerOrder of customersOrder">
+          <h5 class="modal-title" id="exampleModalLabel">
+            View Order Of {{ customerOrder.nameUser }}
+          </h5>
+        </div>
+        <br />
+        <table class="viewTable">
+          <thead class="bg-dark">
+            <tr>
+              <th scope="col">Product</th>
+              <th scope="col">Quantity</th>
+            </tr>
+          </thead>
+          <tbody id="cart-body" class="bg-light">
+            <tr>
+              <td id="nameT"></td>
+              <td id="qtyT"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>

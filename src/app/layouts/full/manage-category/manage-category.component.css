@@ -1,0 +1,61 @@
+.btn {
+  float: left;
+  margin-left: 4px;
+}
+
+#edit:hover {
+  color: blue;
+  cursor: pointer;
+}
+h1 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  margin-top: 10px;
+  color: white;
+}
+hr {
+  border: rgb(0, 0, 0) 2px solid;
+}
+.form-control {
+  margin-left: 22px;
+  width: 90%;
+  text-align: center;
+}
+.form-label {
+  float: left;
+  margin-left: 22px;
+}
+.d-flex {
+  align-items: center;
+}
+.modal-header {
+  align-items: center;
+  background-color: rgb(241, 237, 245);
+}
+.modal-title {
+  color: rgb(92, 78, 239);
+}
+.btnSave {
+  margin: 22px;
+  background-color: blue;
+  color: white;
+}
+.btnDelete {
+  margin: 22px;
+  background-color: red;
+  color: white;
+}
+input {
+  text-align: left !important;
+}
+/* --table-- */
+.table {
+  margin-left: 5px;
+}
+th {
+  color: white;
+}
+
+tbody tr:hover {
+  background-color: rgb(100, 96, 96);
+  color: white;
+}

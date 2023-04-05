@@ -1,0 +1,29 @@
+h1 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  margin-top: 10px;
+  color: white;
+}
+hr {
+  border: rgb(0, 0, 0) 2px solid;
+}
+.fa-trash {
+  color: red;
+}
+i {
+  padding: 3px;
+}
+.fa-trash:hover {
+  cursor: pointer;
+}
+/* --table-- */
+.table {
+  margin-left: 5px;
+}
+th {
+  color: white;
+}
+
+tbody tr:hover {
+  background-color: rgb(100, 96, 96);
+  color: white;
+}

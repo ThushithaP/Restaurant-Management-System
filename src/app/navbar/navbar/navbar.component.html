@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <!--navbar-->
+
+      <!--Menu Checkbox-->
+      <input type="checkbox" id="menu-show" />
+      <!--logo-->
+      <a><img class="logo" src="assets/img/logo.png" alt="logo" /></a>
+
+      <!--Menu Links-->
+      <ul class="menu">
+        <li><a (click)="openSignup()">Sign</a></li>
+        <li><a (click)="openLogin()">Login</a></li>
+        <li><a (click)="openForg()">Forgot Password</a></li>
+      </ul>
+      <!--Menu Icons-->
+      <label for="menu-show"><i class="fas fa-bars"></i></label>
+      <label for="menu-show"><i class="fas fa-times"></i></label>
+    </header>
+    <!--Image Slide radio-->
+    <input type="radio" id="biriyani" name="rd" checked />
+    <input type="radio" id="naan" name="rd" />
+    <input type="radio" id="soup" name="rd" />
+
+    <!--container-->
+    <div class="container">
+      <div class="text-box">
+        <h2>BIRIYANI HUT</h2>
+        <!--Text-->
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex at cumque
+          inventore, ducimus, suscipit aliquid officiis non illum quia molestias
+          excepturi repudiandae natus sequi sint dolorum et tempore distinctio
+          ratione.
+        </p>
+        <a>Signup Now</a>
+      </div>
+      <div class="bg-img">
+        <img src="../../../assets/img/biriyani.png" alt="" />
+        <img src="../../../assets/img/bread.png" alt="" />
+        <img src="../../../assets/img/coke.png" alt="" />
+      </div>
+    </div>
+    <!--slide-->
+    <ul class="thumb">
+      <li>
+        <label for="biriyani"
+          ><img src="../../../assets/img/biriyani.png" alt=""
+        /></label>
+      </li>
+      <li>
+        <label for="naan"
+          ><img src="../../../assets/img/bread.png" alt=""
+        /></label>
+      </li>
+      <li>
+        <label for="soup"
+          ><img src="../../../assets/img/coke.png" alt=""
+        /></label>
+      </li>
+    </ul>
+    <!--Shape-->
+    <div class="shape red"></div>
+    <div class="shape yellow"></div>
+    <div class="shape orange"></div>
+    <!--footer-->
+    <footer>
+      <div class="social">
+        <a href=""><i class="fab fa-facebook-square"></i></a>
+        <a href=""><i class="fab fa-twitter-square"></i></a>
+        <a href=""><i class="fab fa-instagram-square"></i></a>
+        <a href=""><i class="fab fa-linkedin"></i></a>
+      </div>
+      <div class="credit">
+        <p>Copyright &copy; 2023</p>
+      </div>
+    </footer>
+
+    <!-----Signup Form -->
+
+    <form
+      #formSign="ngForm"
+      (ngSubmit)="onSubmitSign(formSign)"
+      class="modal fade"
+      id="signForm"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Signup Form</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+              id="j"
+            ></button>
+          </div>
+          <br />
+          <!-- Name -->
+          <div class="d-flex flex-row align-items-center mb-4">
+            <div class="form-outline flex-fill mb-0">
+              <label class="form-label" for="form3Example1c">Your Name</label>
+              <input
+                type="text"
+                name="name"
+                #name="ngModel"
+                class="form-control"
+                [(ngModel)]="userS.name"
+                minlength="4"
+                pattern="[a-zA-Z0-9 ]*"
+                required
+              />
+              <div class="alert alert-danger" *ngIf="!name.valid">
+                <span *ngIf="name.errors?.['required']">Name is required*</span>
+                <span *ngIf="name.errors?.['pattern']">Enter Valid name</span>
+                <span *ngIf="name.errors?.['minlength']"
+                  >Name should minimum 4 characters</span
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Email -->
+          <div class="d-flex flex-row align-items-center mb-4">
+            <div class="form-outline flex-fill mb-0">
+              <label class="form-label" for="form3Example3c">Your Email</label>
+              <input
+                type="email"
+                name="email"
+                #email="ngModel"
+                class="form-control"
+                [(ngModel)]="userS.email"
+                pattern="[^@\s]+@[^@\s]+"
+                required
+              />
+              <div class="alert alert-danger" *ngIf="!email.valid">
+                <span *ngIf="email.errors?.['required']"
+                  >Email is required*</span
+                >
+                <span *ngIf="email.errors?.['pattern']">Enter Valid email</span>
+              </div>
+            </div>
+          </div>
+          <!-- Contact Number -->
+          <div class="d-flex flex-row align-items-center mb-4">
+            <div class="form-outline flex-fill mb-0">
+              <label class="form-label" for="form3Example4c"
+                >Contact Number</label
+              >
+              <input
+                name="phoneNumber"
+                #phoneNumber="ngModel"
+                type="text"
+                [(ngModel)]="userS.phoneNumber"
+                class="form-control"
+                pattern="^[e0-9]{10,10}$"
+                required
+              />
+              <div class="alert alert-danger" *ngIf="!phoneNumber.valid">
+                <span *ngIf="phoneNumber.errors?.['required']"
+                  >Contact Number is required*</span
+                >
+                <span *ngIf="phoneNumber.errors?.['pattern']"
+                  >Enter Valid Contact Number</span
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Password -->
+          <div class="d-flex flex-row align-items-center mb-4">
+            <div class="form-outline flex-fill mb-0">
+              <label class="form-label" for="form3Example5c">Password</label>
+              <input
+                name="password"
+                type="password"
+                #password="ngModel"
+                class="form-control"
+                [(ngModel)]="userS.password"
+                minlength="6"
+                required
+              />
+              <div class="alert alert-danger" *ngIf="!password.valid">
+                <span *ngIf="password.errors?.['minlength']"
+                  >Password should minimum 6 characters</span
+                >
+                <span>Password is required</span>
+              </div>
+            </div>
+          </div>
+          <!-- confirm password -->
+          <div class="d-flex flex-row align-items-center mb-4">
+            <div class="form-outline flex-fill mb-0">
+              <label class="form-label" for="form3Example5c"
+                >Confirm Password</label
+              >
+              <input id="confirmpassword" class="form-control" required />
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            class="btn btnSign"
+            [disabled]="formSign.invalid"
+          >
+            Signup
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <!-- Login Form -->
+    <form
+      #formLog="ngForm"
+      (ngSubmit)="onSubmitLog(formLog)"
+      class="modal fade"
+      id="logForm"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <br />
+          <!-- Email -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form2Example1">Email address</label>
+            <input
+              name="email"
+              #emailL="ngModel"
+              type="email"
+              class="form-control"
+              ngModel
+              required
+              pattern="[^@\s]+@[^@\s]+"
+            />
+            <div class="alert alert-danger" *ngIf="!emailL.valid">
+              <span *ngIf="emailL.errors?.['required']"
+                >Email is required*</span
+              >
+              <span *ngIf="emailL.errors?.['pattern']">Enter Valid email</span>
+            </div>
+          </div>
+
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form2Example2">Password</label>
+            <input
+              name="password"
+              type="text"
+              ngModel
+              class="form-control"
+              required
+            />
+          </div>
+
+          <button type="submit" class="btn btnSign">Login</button>
+        </div>
+      </div>
+    </form>
+
+    <!--Forgot password Form -->
+
+    <div
+      [formGroup]="forgForm"
+      class="modal top fade"
+      id="forgot"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+      data-mdb-backdrop="true"
+      data-mdb-keyboard="true"
+    >
+      <div class="modal-dialog" style="width: 300px">
+        <div class="modal-content text-center">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Forgot Password</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body px-5">
+            <p class="py-2">
+              Enter your correct email address and we'll send you an email with
+              your password.
+            </p>
+            <div class="form-outline">
+              <input
+                formControlName="email"
+                type="email"
+                id="typeEmail"
+                class="form-control my-3"
+              />
+              <label class="form-label" for="typeEmail">Email input</label>
+            </div>
+            <button class="btn btnSign" (click)="sendMail()">Send Mail</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

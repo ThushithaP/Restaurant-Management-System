@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <a class="navbar-brand" href="">Biriyani Hut</a>
+
+      <!-- Drop down Menu -->
+      <div class="dropdown" (click)="toggleDropdown()">
+        <button
+          class="btn btn-secondary dropdown-toggle-split btn-vertical"
+          type="button"
+        >
+          {{ authService.decodedToken?.name[0] }}
+        </button>
+        <ul
+          class="dropdown-menu dropdown-menu-left"
+          [ngClass]="{ show: showDropdown }"
+        >
+          <a class="dropdown-item" (click)="openP()"
+            ><i class="fa fa-key" aria-hidden="true"></i>Change Password</a
+          >
+          <a class="dropdown-item" (click)="openProf()"
+            ><i class="fa fa-user" aria-hidden="true"></i>Change Profile</a
+          >
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" (click)="logOut()"
+            ><i class="fa fa-sign-in" aria-hidden="true"></i>Logout</a
+          >
+        </ul>
+      </div>
+    </div>
+    <!-- User Info change form -->
+    <form #formProf="ngForm" (ngSubmit)="onSubmitProf(formProf)">
+      <div
+        class="modal fade"
+        id="ff"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Change Profile</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+                id="j"
+              ></button>
+            </div>
+            <!-- Email -->
+            <div class="form-outline flex-fill mb-3">
+              <label class="form-label" for="form3Example1c">E mail</label>
+              <input
+                #email="ngModel"
+                type="text"
+                id=""
+                class="form-control"
+                name="email"
+                [(ngModel)]="user.email"
+                pattern="[^@\s]+@[^@\s]+"
+                required
+              />
+              <div class="alert alert-danger" *ngIf="!email.valid">
+                <span *ngIf="email.errors?.['required']"
+                  >Email is required*</span
+                >
+                <span *ngIf="email.errors?.['pattern']">Enter Valid email</span>
+              </div>
+            </div>
+            <!-- Name -->
+            <div class="form-outline flex-fill mb-3">
+              <label class="form-label" for="form3Example1c">Name</label>
+              <input
+                type="text"
+                #name="ngModel"
+                id=""
+                class="form-control"
+                required
+                name="name"
+                minlength="4"
+                pattern="[a-zA-Z0-9 ]*"
+                [(ngModel)]="user.name"
+              />
+              <div class="alert alert-danger" *ngIf="!name.valid">
+                <span *ngIf="name.errors?.['required']">Name is required*</span>
+                <span *ngIf="name.errors?.['pattern']">Enter Valid Name</span>
+                <span *ngIf="name.errors?.['minlength']"
+                  >Name should minimum 4 characters</span
+                >
+              </div>
+            </div>
+            <!-- Phone Number -->
+            <div class="form-outline flex-fill mb-3">
+              <label class="form-label" for="form3Example1c"
+                >Contact Number</label
+              >
+              <input
+                type="text"
+                #phoneNumber="ngModel"
+                id=""
+                class="form-control"
+                name="phoneNumber"
+                pattern="^[e0-9]{10,10}$"
+                ngModel
+                required
+              />
+              <div class="alert alert-danger" *ngIf="!phoneNumber.valid">
+                <span *ngIf="phoneNumber.errors?.['required']"
+                  >Contact Number is required*</span
+                >
+                <span *ngIf="phoneNumber.errors?.['pattern']"
+                  >Enter Valid Contact Number</span
+                >
+              </div>
+            </div>
+            <!-- Password -->
+            <div class="form-outline flex-fill mb-3">
+              <label class="form-label" for="form3Example1c">Password</label>
+              <input
+                type="text"
+                id=""
+                class="form-control"
+                name="password"
+                ngModel
+                required
+              />
+            </div>
+            <!-- button -->
+            <div class="d-flex justify-content-center pt-3">
+              <button
+                type="submit"
+                class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
+                [disabled]="formProf.invalid"
+              >
+                Save
+              </button>
+            </div>
+            <div class="d-flex justify-content-center pt-3">
+              <button
+                type="button"
+                class="btn btn-danger btn-block gradient-custom-3 text-body"
+                data-dismiss="modal"
+                (click)="closeProf()"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <!-- User password change Form -->
+    <form #formPass="ngForm" (ngSubmit)="onSubmitPass(formPass)">
+      <div
+        class="modal fade"
+        id="pass"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Change Profile</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+                id="j"
+              ></button>
+            </div>
+            <!-- Email -->
+            <div class="form-outline flex-fill mb-3">
+              <label class="form-label" for="form3Example1c">E mail</label>
+              <input
+                #emailP="ngModel"
+                type="text"
+                id=""
+                class="form-control"
+                name="email"
+                [(ngModel)]="userP.email"
+                pattern="[^@\s]+@[^@\s]+"
+                required
+              />
+              <div class="alert alert-danger" *ngIf="!emailP.valid">
+                <span *ngIf="emailP.errors?.['required']"
+                  >Email is required*</span
+                >
+                <span *ngIf="emailP.errors?.['pattern']"
+                  >Enter Valid email</span
+                >
+              </div>
+            </div>
+
+            <!-- Old Password -->
+            <div class="form-outline flex-fill mb-3">
+              <label class="form-label" for="form3Example1c"
+                >Old Password</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                name="oldPassword"
+                [(ngModel)]="userP.oldPassword"
+                required
+              />
+            </div>
+
+            <!-- New Password -->
+            <div class="form-outline flex-fill mb-3">
+              <label class="form-label" for="form3Example1c"
+                >New Password</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                name="newPassword"
+                [(ngModel)]="userP.newPassword"
+                required
+              />
+            </div>
+            <!-- Button -->
+            <div class="d-flex justify-content-center pt-3">
+              <button
+                type="submit"
+                class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
+                [disabled]="formPass.invalid"
+              >
+                Save
+              </button>
+            </div>
+            <div class="d-flex justify-content-center pt-3">
+              <button
+                type="button"
+                class="btn btn-danger btn-block gradient-custom-3 text-body"
+                data-dismiss="modal"
+                (click)="closeP()"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </body>
+</html>
