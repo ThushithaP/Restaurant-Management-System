@@ -78,7 +78,10 @@
                 pattern="[^@\s]+@[^@\s]+"
                 required
               />
-              <div class="alert alert-danger" *ngIf="!email.valid">
+              <div
+                class="alert alert-danger"
+                *ngIf="email.touched && (email.invalid || email.errors)"
+              >
                 <span *ngIf="email.errors?.['required']"
                   >Email is required*</span
                 >
@@ -122,7 +125,13 @@
                 ngModel
                 required
               />
-              <div class="alert alert-danger" *ngIf="!phoneNumber.valid">
+              <div
+                class="alert alert-danger"
+                *ngIf="
+                  phoneNumber.touched &&
+                  (phoneNumber.invalid || phoneNumber.errors)
+                "
+              >
                 <span *ngIf="phoneNumber.errors?.['required']"
                   >Contact Number is required*</span
                 >
@@ -133,9 +142,11 @@
             </div>
             <!-- Password -->
             <div class="form-outline flex-fill mb-3">
-              <label class="form-label" for="form3Example1c">Password</label>
+              <label class="form-label" for="form3Example1c"
+                >Enter Your Password</label
+              >
               <input
-                type="text"
+                type="password"
                 id=""
                 class="form-control"
                 name="password"
@@ -144,25 +155,14 @@
               />
             </div>
             <!-- button -->
-            <div class="d-flex justify-content-center pt-3">
-              <button
-                type="submit"
-                class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
-                [disabled]="formProf.invalid"
-              >
-                Save
-              </button>
-            </div>
-            <div class="d-flex justify-content-center pt-3">
-              <button
-                type="button"
-                class="btn btn-danger btn-block gradient-custom-3 text-body"
-                data-dismiss="modal"
-                (click)="closeProf()"
-              >
-                Close
-              </button>
-            </div>
+
+            <button
+              type="submit"
+              class="btn btnUser"
+              [disabled]="formProf.invalid"
+            >
+              Save
+            </button>
           </div>
         </div>
       </div>
@@ -203,7 +203,10 @@
                 pattern="[^@\s]+@[^@\s]+"
                 required
               />
-              <div class="alert alert-danger" *ngIf="!emailP.valid">
+              <div
+                class="alert alert-danger"
+                *ngIf="emailP.touched && (emailP.invalid || emailP.errors)"
+              >
                 <span *ngIf="emailP.errors?.['required']"
                   >Email is required*</span
                 >
@@ -219,7 +222,7 @@
                 >Old Password</label
               >
               <input
-                type="text"
+                type="password"
                 class="form-control"
                 name="oldPassword"
                 [(ngModel)]="userP.oldPassword"
@@ -233,7 +236,7 @@
                 >New Password</label
               >
               <input
-                type="text"
+                type="password"
                 class="form-control"
                 name="newPassword"
                 [(ngModel)]="userP.newPassword"
@@ -241,25 +244,14 @@
               />
             </div>
             <!-- Button -->
-            <div class="d-flex justify-content-center pt-3">
-              <button
-                type="submit"
-                class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
-                [disabled]="formPass.invalid"
-              >
-                Save
-              </button>
-            </div>
-            <div class="d-flex justify-content-center pt-3">
-              <button
-                type="button"
-                class="btn btn-danger btn-block gradient-custom-3 text-body"
-                data-dismiss="modal"
-                (click)="closeP()"
-              >
-                Close
-              </button>
-            </div>
+
+            <button
+              type="submit"
+              class="btn btnUser"
+              [disabled]="formPass.invalid"
+            >
+              Save
+            </button>
           </div>
         </div>
       </div>

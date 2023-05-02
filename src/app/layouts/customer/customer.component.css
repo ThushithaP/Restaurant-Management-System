@@ -22,7 +22,7 @@
 /* --card--- */
 .card {
   display: inline-block;
-  margin: 10px;
+  margin: 7px;
   text-align: center;
   font-family: sans-serif;
   background-color: #3e5151;
@@ -40,6 +40,15 @@
   width: 100%;
   border-radius: 1%;
   clip-path: circle(100% at top);
+}
+.card-text {
+  height: 100px;
+  overflow: hidden;
+}
+.card-price {
+  color: #e14a4a;
+  font-family: "Roboto Mono", monospace;
+  font-weight: bolder;
 }
 #cardBody {
   border-radius: 1.8%;
@@ -116,7 +125,7 @@
 .cartimg {
   position: relative;
 }
-.myorder {
+.button-blue {
   float: right;
   margin: 10px;
 }
@@ -127,11 +136,17 @@
 #myorder {
   width: 100%;
 }
+#address-cart {
+  width: 120% !important;
+}
 
 /* ---Responsive--- */
 @media (max-width: 850px) {
   .products {
     margin: 10px;
+  }
+  #offcanvasTop {
+    width: 80% !important;
   }
 }
 @media (max-width: 670px) {
@@ -144,9 +159,17 @@
     margin: 20px;
   }
 }
+@media (max-width: 398px) {
+  #address-cart {
+    width: 150% !important;
+  }
+}
 @media (max-width: 310px) {
   .card {
     width: 95% !important;
+  }
+  #offcanvasTop {
+    width: 100% !important;
   }
 }
 /* --My Cart */

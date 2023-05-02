@@ -18,9 +18,9 @@
 
       <!--Menu Links-->
       <ul class="menu">
-        <li><a (click)="openSignup()">Sign</a></li>
+        <li><a (click)="openSignup()">Signup</a></li>
         <li><a (click)="openLogin()">Login</a></li>
-        <li><a (click)="openForg()">Forgot Password</a></li>
+        <li><a>Services</a></li>
       </ul>
       <!--Menu Icons-->
       <label for="menu-show"><i class="fas fa-bars"></i></label>
@@ -113,7 +113,7 @@
           <!-- Name -->
           <div class="d-flex flex-row align-items-center mb-4">
             <div class="form-outline flex-fill mb-0">
-              <label class="form-label" for="form3Example1c">Your Name</label>
+              <label class="form-label">Your Name</label>
               <input
                 type="text"
                 name="name"
@@ -124,7 +124,10 @@
                 pattern="[a-zA-Z0-9 ]*"
                 required
               />
-              <div class="alert alert-danger" *ngIf="!name.valid">
+              <div
+                class="alert alert-danger"
+                *ngIf="name.touched && (name.invalid || name.errors)"
+              >
                 <span *ngIf="name.errors?.['required']">Name is required*</span>
                 <span *ngIf="name.errors?.['pattern']">Enter Valid name</span>
                 <span *ngIf="name.errors?.['minlength']"
@@ -136,7 +139,7 @@
           <!-- Email -->
           <div class="d-flex flex-row align-items-center mb-4">
             <div class="form-outline flex-fill mb-0">
-              <label class="form-label" for="form3Example3c">Your Email</label>
+              <label class="form-label">Your Email</label>
               <input
                 type="email"
                 name="email"
@@ -146,7 +149,10 @@
                 pattern="[^@\s]+@[^@\s]+"
                 required
               />
-              <div class="alert alert-danger" *ngIf="!email.valid">
+              <div
+                class="alert alert-danger"
+                *ngIf="email.touched && (email.invalid || email.errors)"
+              >
                 <span *ngIf="email.errors?.['required']"
                   >Email is required*</span
                 >
@@ -157,9 +163,7 @@
           <!-- Contact Number -->
           <div class="d-flex flex-row align-items-center mb-4">
             <div class="form-outline flex-fill mb-0">
-              <label class="form-label" for="form3Example4c"
-                >Contact Number</label
-              >
+              <label class="form-label">Contact Number</label>
               <input
                 name="phoneNumber"
                 #phoneNumber="ngModel"
@@ -169,7 +173,13 @@
                 pattern="^[e0-9]{10,10}$"
                 required
               />
-              <div class="alert alert-danger" *ngIf="!phoneNumber.valid">
+              <div
+                class="alert alert-danger"
+                *ngIf="
+                  phoneNumber.touched &&
+                  (phoneNumber.invalid || phoneNumber.errors)
+                "
+              >
                 <span *ngIf="phoneNumber.errors?.['required']"
                   >Contact Number is required*</span
                 >
@@ -182,7 +192,7 @@
           <!-- Password -->
           <div class="d-flex flex-row align-items-center mb-4">
             <div class="form-outline flex-fill mb-0">
-              <label class="form-label" for="form3Example5c">Password</label>
+              <label class="form-label">Password</label>
               <input
                 name="password"
                 type="password"
@@ -192,7 +202,12 @@
                 minlength="6"
                 required
               />
-              <div class="alert alert-danger" *ngIf="!password.valid">
+              <div
+                class="alert alert-danger"
+                *ngIf="
+                  password.touched && (password.invalid || password.errors)
+                "
+              >
                 <span *ngIf="password.errors?.['minlength']"
                   >Password should minimum 6 characters</span
                 >
@@ -203,10 +218,13 @@
           <!-- confirm password -->
           <div class="d-flex flex-row align-items-center mb-4">
             <div class="form-outline flex-fill mb-0">
-              <label class="form-label" for="form3Example5c"
-                >Confirm Password</label
-              >
-              <input id="confirmpassword" class="form-control" required />
+              <label class="form-label">Confirm Password</label>
+              <input
+                id="confirmpassword"
+                class="form-control"
+                type="password"
+                required
+              />
             </div>
           </div>
 
@@ -246,7 +264,7 @@
           <br />
           <!-- Email -->
           <div class="form-outline mb-4">
-            <label class="form-label" for="form2Example1">Email address</label>
+            <label class="form-label">Email address</label>
             <input
               name="email"
               #emailL="ngModel"
@@ -256,7 +274,10 @@
               required
               pattern="[^@\s]+@[^@\s]+"
             />
-            <div class="alert alert-danger" *ngIf="!emailL.valid">
+            <div
+              class="alert alert-danger"
+              *ngIf="emailL.touched && (emailL.invalid || emailL.errors)"
+            >
               <span *ngIf="emailL.errors?.['required']"
                 >Email is required*</span
               >
@@ -265,10 +286,10 @@
           </div>
 
           <div class="form-outline mb-4">
-            <label class="form-label" for="form2Example2">Password</label>
+            <label class="form-label">Password</label>
             <input
               name="password"
-              type="text"
+              type="password"
               ngModel
               class="form-control"
               required
@@ -276,6 +297,9 @@
           </div>
 
           <button type="submit" class="btn btnSign">Login</button>
+          <label class="form-label" (click)="openForg()"
+            >Forgot Your Password ?
+          </label>
         </div>
       </div>
     </form>

@@ -12,8 +12,12 @@
 
 <div class="sidenav">
   <!-- <ul class="sidenav-nav"> -->
-  <li class="sidenav-nav-item" *ngFor="let data of sideData">
-    <a class="sidenav-nav-link" [routerLink]="[data.routerLink]">
+  <li
+    class="sidenav-nav-item"
+    [routerLink]="[data.routerLink]"
+    *ngFor="let data of sideData"
+  >
+    <a class="sidenav-nav-link">
       <i class="sidenav-link-icon" [class]="data.icon"></i>
       <span class="sidenav-link-text">{{ data.label }}</span>
     </a>

@@ -9,7 +9,7 @@ declare var window: any;
 @Component({
   selector: 'app-customer',
   templateUrl: './customer.component.html',
-  styleUrls: ['./customer.component.css'],
+  styleUrls: ['./customer.component.css', '../../../shared/button.css'],
 })
 export class CustomerComponent implements OnInit {
   @ViewChild('row') row!: ElementRef;
@@ -36,22 +36,39 @@ export class CustomerComponent implements OnInit {
     private toastr: ToastrService
   ) {}
   ngOnInit(): void {
-    this.biriyaniDetails();
+    this.AllDetails();
     this.orderDetails();
   }
   // product details for card
   biriyaniDetails() {
-    this.productService.biriyani().subscribe((response: any) => {
+    var data = {
+      category: 'biriyani',
+    };
+    this.productService.AllProducts(data).subscribe((response: any) => {
       this.data = response;
     });
   }
   breadDetails() {
-    this.productService.bread().subscribe((response: any) => {
+    var data = {
+      category: 'bread',
+    };
+    this.productService.AllProducts(data).subscribe((response: any) => {
       this.data = response;
     });
   }
   softDrinks() {
-    this.productService.softDrinks().subscribe((response: any) => {
+    var data = {
+      category: 'softDrinks',
+    };
+    this.productService.AllProducts(data).subscribe((response: any) => {
+      this.data = response;
+    });
+  }
+  AllDetails() {
+    var data = {
+      category: 'all',
+    };
+    this.productService.AllProducts(data).subscribe((response: any) => {
       this.data = response;
     });
   }
@@ -71,7 +88,7 @@ export class CustomerComponent implements OnInit {
         id: item.id,
         name: item.name,
         price: item.price,
-        qty: 1,
+        qty: 0,
       });
 
       this.toastr.success('Added to cart', '', {

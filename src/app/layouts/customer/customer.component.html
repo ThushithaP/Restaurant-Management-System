@@ -1,6 +1,13 @@
 <app-header></app-header>
 
 <div class="container-fluid">
+  <!-- All -->
+  <div class="products" (click)="AllDetails()">
+    <img src="../../../assets/img/all.png" class="card-img-top" alt="" />
+    <div class="card-body">
+      <p class="card-title">All</p>
+    </div>
+  </div>
   <!-- Biriyani -->
   <div class="products" (click)="biriyaniDetails()">
     <img src="../../../assets/img/biriyani.png" class="card-img-top" alt="" />
@@ -23,7 +30,7 @@
     </div>
   </div>
   <button
-    class="myorder"
+    class="button-blue"
     type="button"
     data-bs-toggle="offcanvas"
     data-bs-target="#offcanvasTop"
@@ -102,10 +109,13 @@
           </td>
         </tr>
         <tr id="rowCst" #rowCst>
-          <td>Adress:<textarea></textarea></td>
+          <td>
+            <label for="address">Address:</label
+            ><textarea id="address-cart" class="form-control"></textarea>
+          </td>
         </tr>
         <tr id="rownum" #rownum>
-          <td>Contact Number:<input type="text" /></td>
+          <td>Contact Number:<input class="form-control" type="text" /></td>
         </tr>
 
         <img src="../../../assets/img/free-delivery.png" width="100%" />
@@ -122,27 +132,21 @@
     <img
       [src]="obj.photo"
       class="card-img-top"
-      height="290px"
+      height="300px"
       width="270px"
       alt="..."
     />
-    <br /><br /><br />
+    <br /><br />
   </div>
 
   <div id="cardBody" class="card-body">
     <h5 id="head" class="card-title">{{ obj.name }}</h5>
     <p class="card-text">{{ obj.description }}</p>
-    <h5>Rs. {{ obj.price }}</h5>
+    <h5 class="card-price">Rs. {{ obj.price }}</h5>
     <button href="#" class="btn" (click)="addToCart(obj)">Add to cart</button>
   </div>
 </div>
 <app-footer></app-footer>
-<!-- <p>
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos
-  praesentium delectus error, laboriosam enim numquam quasi harum minus!
-  Doloribus enim iste ratione nemo debitis expedita velit minima vel officiis
-  similique.
-</p> -->
 
 <!--My Orders-->
 

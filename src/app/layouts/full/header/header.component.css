@@ -16,7 +16,11 @@
   float: right;
   margin-top: 8px;
 }
-
+.btnUser {
+  margin: 22px;
+  background-color: blue;
+  color: white;
+}
 .dropdown-menu {
   position: absolute;
   top: 100%;
@@ -40,6 +44,12 @@
 
 .show {
   display: block;
+}
+i {
+  margin-right: 10px;
+}
+a:hover {
+  cursor: pointer;
 }
 
 /*----Form----*/
