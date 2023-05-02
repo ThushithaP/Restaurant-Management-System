@@ -65,6 +65,7 @@ export class NavbarComponent implements OnInit {
   }
   openForg() {
     this.formFog.show();
+    this.closeLogin();
   }
   closeForg() {
     this.formFog.hide();

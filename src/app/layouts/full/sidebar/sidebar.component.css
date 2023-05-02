@@ -5,6 +5,7 @@ li a {
   /* background-color: rgb(105, 101, 95); */
   transform: scale(0.9);
   transition: 0.3s;
+  cursor: pointer;
 }
 li {
   list-style-type: none;

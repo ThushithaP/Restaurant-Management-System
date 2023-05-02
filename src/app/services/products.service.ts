@@ -85,15 +85,12 @@ export class ProductsService {
     return this.http.get(`${this.apiUrl}/products/gg/${categoryId}`);
   }
 
-  //---customer service----//
-  biriyani() {
-    return this.http.get(this.apiUrl + '/products/biriyani');
-  }
-  bread() {
-    return this.http.get(this.apiUrl + '/products/bread');
-  }
-  softDrinks() {
-    return this.http.get(this.apiUrl + '/products/softDrinks');
+  //---Display produt card----//
+
+  AllProducts(data: any) {
+    return this.http.get(this.apiUrl + '/products/showCategoryWise', {
+      params: data,
+    });
   }
 
   // --product Available---//
